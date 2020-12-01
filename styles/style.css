@@ -1,0 +1,13 @@
+div {
+    height: 100px;
+    width: 100%;
+    background: aqua;
+    margin-bottom: 10px;
+    transition: 1s;
+}
+
+.active {
+    width: 600px;
+    color: darkslateblue !important;
+    background: #000 !important;
+}
