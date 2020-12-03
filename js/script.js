@@ -19,6 +19,6 @@ $('div').on('click', function() {
 
 // $('div').changeHeight().changeWidth()
 
-
+$('.testing').changeHeight()
 
 $('div').hover()

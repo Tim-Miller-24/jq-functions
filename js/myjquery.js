@@ -106,7 +106,7 @@ function JQ(params) {
             }
         } else {
             for (let i = 0; i < this.element.length; i++) {
-                this.element[i].style.width = this.element[i].clientWidth
+                this.element[i].style.width = this.element[0].clientWidth
             }
         }
 
@@ -122,10 +122,12 @@ function JQ(params) {
             for (let i = 0; i < this.element.length; i++) {
                 this.element[i].style.height = userHeight + 'px';
             }
-        } else {
-            for (let i = 0; i < this.element.length; i++) {
-                this.element[i].style.height = this.element[i].clientHeight
-            }
+        } else if (userHeight == null) {
+            // for (let i = 0; i < this.element.length; i++) {
+            //     this.element[i].style.height  
+            //     // console.log(this.element); 
+            // }
+            console.log(this.element);
         }
 
         return this;
