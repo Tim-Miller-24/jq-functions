@@ -15,3 +15,14 @@ div {
 .testing {
     height: 300px;
 }
+
+p {
+    width: 400px;
+    background: darkred;
+    color: wheat;
+    padding: 20px;
+}
+
+p.collapse {
+    display: none;
+}

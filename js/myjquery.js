@@ -60,7 +60,7 @@ function JQ(params) {
                 } else {
                     this.element[i].classList.add(nameClass);
                 }
-            }            
+            }
         }
 
         return this;
@@ -69,7 +69,7 @@ function JQ(params) {
     this.hover = function (mouseOverFuns, mouseOutFunc) {
         if (typeof mouseOverFuns == 'function' && typeof mouseOutFunc == 'function') {
             this.on('mouseover', mouseOverFuns);
-            this.on('mouseout', mouseOutFunc);        
+            this.on('mouseout', mouseOutFunc);
         }
 
         return this;
@@ -126,5 +126,88 @@ function JQ(params) {
 
         return this;
     }
+
+    this.dblclick = function (callBackFunction) {
+        if (typeof callBackFunction == 'function') {
+            // for (let i = 0; i < this.element.length; i++) {
+            //     this.element[i].addEventListener('dblclick', callBackFunction)
+            // }
+            this.on('dblclick', callBackFunction)
+        }
+
+        return this;
+    }
+
+    this.attr = function (attrName, value) {
+        if (typeof attrName == 'string' && (typeof value == 'string' || typeof value == 'number')) {
+            for (let i = 0; i < this.element.length; i++) {
+                this.element[i].setAttribute(attrName, value)
+            }
+        } else if (typeof attrName == 'object' && attrName !== null && !Array.isArray(attrName))
+            for (let i = 0; i < this.element.length; i++) {
+                for (const key in attrName) {
+                    this.element[i].setAttribute(key, attrName[key]);
+                }
+            }
+        return this;
+    }
+
+    this.removeAttr = function (attrName) {
+        if (typeof attrName == 'string') {
+            for (let i = 0; i < this.element.length; i++) {
+                this.element[i].removeAttribute(attrName);
+            }
+        }
+
+        return this;
+    }
+
+    this.nextElem = function () {
+        this.element = [this.element[0].nextElementSibling];
+
+        return this;
+    }
+
+    this.checkClass = function (className) {
+        if (typeof className == 'string') {
+            for (let i = 0; i < this.element.length; i++) {
+                return this.element[i].classList.contains(className) ? true : false
+            }
+        }
+
+        return this;
+    }
+
+    this.onHover = function (callbackFunc) {
+        if (typeof callbackFunc == 'function') {
+            this.on('mouseover', callbackFunc);
+        }
+
+        return this;
+    }
+
+    this.prevElem = function () {
+        // this.element = [this.element[0].previousElementSibling]
+
+        for (let i = 0; i < this.element.length; i++) {
+            this.element[i] = this.element[i].previousElementSibling;
+        }
+        return this;
+    }
+
+    this.childElem = function () {
+        for (let i = 0; i < this.element.length; i++) {
+            this.element[i] = this.element[i].children;
+        }
+
+        return this;
+    }
 }
 
+/* 
+Вашим домашним заданием будет сделать несколько методов: 
+1)  Проверяет наличие класса у элемента. Возвращает истину или ложь.
+2)  Выполняет переданную функцию при наведении на элемент.
+3)  Возвращает предыдущий элемент.
+4)  Возвращает дочерний элемент.
+*/
